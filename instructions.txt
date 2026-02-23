@@ -1,0 +1,10 @@
+Le but de ce dossier est de servir de base pour le cours Atelier numérique dans lequel je devrais créer un site qui sert de trace du cours et de metacoginition. Le descriptif pour le projet est le suivant:
+
+Le but est double: créer un site et rassembler des questionnements, informations et ressources pour enseigner. 
+Pour chaque cours-séminaire (5 au total), vous devez créer une page sur laquelle figure un résumé de ce qui a été vu durant le cours. 
+Vous allez également noter 3 questionnements, remarques, .... Ces questionnements seront repris lors du cours suivant et discutés en groupe. 
+Vous pouvez également créer une première page sur laquelle vous vous présentez!
+
+Pour chaque cours je vais mettre un fichier txt de ce qui a été fait et de mes remarques pour pouvoir constituer le contenu. 
+
+Concernant le style du site je veux un thème dark avec des accents oranges, modernes et comme police du Jetbrains NF. Un style numérique donc pourquoi pas accentuer avec des accents un peu cyber, je vois bien des motifs de circuit electriques en orange. Pour les 3 reflexions je vois bien des cases en bas de page, pour bien les mettre en évidence. 
