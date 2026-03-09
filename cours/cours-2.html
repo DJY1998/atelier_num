@@ -29,9 +29,13 @@
       <section class="panel hero">
         <div>
           <div class="eyebrow">Cours 2</div>
-          <h1>Cours 2 — En attente</h1>
-          <p class="placeholder">
-            Cours pas encore suivi. Cette page sera complétée après la séance.
+          <h1>Intelligence artificielle et découverte d'outils numériques</h1>
+          <p>
+            Cette séance était centrée principalement sur l'IA en contexte scolaire, avec une
+            ouverture sur des outils numériques utiles en classe.
+          </p>
+          <p class="muted">
+            Le cours a combiné analyse des enjeux, discussion éthique et mise en pratique.
           </p>
         </div>
       </section>
@@ -39,15 +43,178 @@
       <section class="panel grid-2">
         <div>
           <h2>Résumé</h2>
-          <p class="placeholder">Notes à venir.</p>
+          <p>
+            Nous avons revu la pyramide de Bloom pour réfléchir aux usages des outils TICE selon
+            les niveaux cognitifs visés. L'accent a été mis sur la cohérence entre objectif
+            d'apprentissage, activité et outil numérique mobilisé.
+          </p>
+          <p>
+            Un TP de découverte d'outils numériques a aussi été réalisé pour explorer des usages
+            concrets transférables en classe.
+          </p>
+          <p>
+            La discussion a ensuite approfondi les enjeux éthiques de l'IA dans l'enseignement:
+            responsabilité, transparence, biais, dépendance et place de l'esprit critique.
+          </p>
         </div>
         <div>
           <h2>Points clés</h2>
           <ul class="list">
-            <li><span>•</span> Point clé à venir.</li>
-            <li><span>•</span> Point clé à venir.</li>
-            <li><span>•</span> Point clé à venir.</li>
+            <li><span>•</span> Sécurité informatique et protection des données.</li>
+            <li><span>•</span> Coût énergétique du numérique et de l'IA générative.</li>
+            <li><span>•</span> Addictions et usages problématiques des réseaux sociaux.</li>
+            <li><span>•</span> Comparaison d'outils IA au-delà de ChatGPT.</li>
           </ul>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Outil mobilisé en classe: Phyphox</h2>
+        <p>
+          L'application <a class="inline-link" href="https://phyphox.org/" target="_blank" rel="noopener noreferrer"><strong>Phyphox</strong></a>
+          est utilisée ponctuellement pour les expériences en physique. Elle permet d'exploiter les
+          capteurs des smartphones pour créer des mesures rapides et exploitables en activité de
+          laboratoire.
+        </p>
+        <p class="muted">
+          Intérêt pédagogique: passage plus fluide entre expérimentation, visualisation des données
+          et interprétation scientifique.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Créer un site pédagogique avec IA, Git et Netlify</h2>
+        <ol class="process-list">
+          <li>
+            <strong>Définir le besoin pédagogique.</strong> Identifier la cible (classe), les
+            objectifs d'apprentissage, le format (exercices, simulation, escape game, support de
+            cours) et les critères d'évaluation.
+          </li>
+          <li>
+            <strong>Écrire un prompt de cadrage.</strong> Décrire précisément la structure voulue:
+            sections, interactions, style, contraintes techniques et niveau des élèves.
+          </li>
+          <li>
+            <strong>Générer une première version.</strong> Utiliser Codex ou ChatGPT pour produire
+            le squelette HTML/CSS/JS avec des données d'exemple.
+          </li>
+          <li>
+            <strong>Itérer jusqu'au rendu final.</strong> Corriger le fond (contenu, consignes,
+            progressivité) et la forme (lisibilité, ergonomie, animations, accessibilité).
+          </li>
+          <li>
+            <strong>Versionner proprement.</strong> Initialiser Git, faire des commits clairs,
+            publier sur GitHub pour conserver l'historique et faciliter les mises à jour.
+          </li>
+          <li>
+            <strong>Déployer avec Netlify.</strong> Connecter le repository Git à Netlify,
+            sélectionner la branche de publication, puis laisser Netlify redéployer
+            automatiquement à chaque push.
+          </li>
+          <li>
+            <strong>Exploiter en classe.</strong> Partager l'URL aux élèves, observer les usages,
+            puis améliorer la ressource en continu selon les retours.
+          </li>
+        </ol>
+        <div class="grid-2 compact-grid">
+          <article class="mini-card">
+            <h3>Approche Codex en local</h3>
+            <p>
+              Codex travaille directement sur les fichiers locaux du projet: HTML, CSS, JS et
+              contenus. Cela facilite les modifications multi-fichiers, évite les copier-coller,
+              et permet d'enchaîner rapidement lecture, édition, vérification et commit.
+            </p>
+            <p class="muted">
+              En pratique: on donne un objectif précis, Codex applique les changements dans les
+              bons fichiers, puis on valide le résultat avant de publier.
+            </p>
+          </article>
+          <article class="mini-card">
+            <h3>Approche ChatGPT + éditeur</h3>
+            <p>
+              Approche utile pour prototyper vite, avec des allers-retours de prompt et
+              d'intégration manuelle dans le code.
+            </p>
+            <p class="muted">
+              Elle reste efficace, mais demande plus de manipulation manuelle dès que le projet
+              contient plusieurs pages et composants.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Exemples de sites publiés sur Netlify</h2>
+        <div class="resource-grid">
+          <article class="resource-card">
+            <h3>Chute Libre</h3>
+            <p>
+              Exercice diagnostique en ligne pour rediriger les élèves vers les postes adaptés en
+              fonction des erreurs repérées.
+            </p>
+            <a class="cta-link" href="https://chutelibree1.netlify.app/" target="_blank" rel="noopener noreferrer">
+              Ouvrir le site
+            </a>
+          </article>
+          <article class="resource-card">
+            <h3>Momentum Simul</h3>
+            <p>
+              Simulation interactive pour mieux comprendre la conservation de la quantité de
+              mouvement.
+            </p>
+            <a class="cta-link" href="https://momentumsimul.netlify.app/" target="_blank" rel="noopener noreferrer">
+              Ouvrir le site
+            </a>
+          </article>
+          <article class="resource-card">
+            <h3>Energy Escape</h3>
+            <p>
+              Exercices de fin de séquence sur le thème énergie et puissance, en format escape game.
+            </p>
+            <a class="cta-link" href="https://energyescape.netlify.app/" target="_blank" rel="noopener noreferrer">
+              Ouvrir le site
+            </a>
+          </article>
+          <article class="resource-card">
+            <h3>Druck</h3>
+            <p>
+              Séquence d'enseignement programmé sur la pression, en contexte de classe bilingue.
+            </p>
+            <a class="cta-link" href="https://druck.netlify.app/" target="_blank" rel="noopener noreferrer">
+              Ouvrir le site
+            </a>
+          </article>
+          <article class="resource-card">
+            <h3>Imagier Sonore</h3>
+            <p>
+              Projet d'imagier sonore, conçu comme ébauche pour l'enseignement spécialisé.
+            </p>
+            <a class="cta-link" href="https://imagier-sonore.netlify.app/" target="_blank" rel="noopener noreferrer">
+              Ouvrir le site
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Présentation HTML avec animations légères</h2>
+        <p>
+          Ce mode de production est aussi utile pour créer des présentations animées sans générer
+          de fichiers lourds. Le principe: fournir les données à l'IA, produire une page HTML
+          autonome, puis l'ouvrir directement dans le navigateur.
+        </p>
+        <div class="preview-actions">
+          <a class="cta-link alt" href="../202_OS_presentation_exposes.html" target="_blank" rel="noopener noreferrer">
+            Ouvrir la présentation en plein écran
+          </a>
+        </div>
+        <div class="preview-shell">
+          <iframe
+            class="preview-frame"
+            src="../202_OS_presentation_exposes.html"
+            title="Prévisualisation de la présentation HTML"
+            loading="lazy"
+          ></iframe>
         </div>
       </section>
 
@@ -55,13 +222,22 @@
         <h2>3 questions / réflexions</h2>
         <div class="reflections">
           <div class="reflection-card">
-            <p class="placeholder">Question à venir.</p>
+            <p>
+              Comment définir une règle claire d'usage de l'IA qui encourage l'apprentissage sans
+              favoriser la délégation complète du travail?
+            </p>
           </div>
           <div class="reflection-card">
-            <p class="placeholder">Question à venir.</p>
+            <p>
+              Quel équilibre viser entre innovation pédagogique et sobriété numérique face aux coûts
+              énergétiques des outils IA?
+            </p>
           </div>
           <div class="reflection-card">
-            <p class="placeholder">Question à venir.</p>
+            <p>
+              À partir de quel niveau d'autonomie numérique peut-on attendre des élèves une
+              utilisation réellement critique des assistants IA?
+            </p>
           </div>
         </div>
       </section>
