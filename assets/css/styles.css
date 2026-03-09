@@ -426,6 +426,27 @@ span.muted {
   background: #0a0a0a;
 }
 
+.ascii-wrap {
+  margin-top: 12px;
+  border: 1px solid rgba(255, 122, 24, 0.28);
+  border-radius: var(--radius-sm);
+  background: #050505;
+  overflow: auto;
+  box-shadow: inset 0 0 0 1px rgba(255, 122, 24, 0.08);
+}
+
+.ascii-art {
+  margin: 0;
+  padding: 16px;
+  font-family: var(--font-main);
+  font-size: 0.5rem;
+  line-height: 1;
+  letter-spacing: 0;
+  color: #ffd4a8;
+  white-space: pre;
+  min-width: max-content;
+}
+
 .reflections {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -509,6 +530,11 @@ span.muted {
 
   .preview-frame {
     height: clamp(320px, 58vh, 620px);
+  }
+
+  .ascii-art {
+    font-size: 0.43rem;
+    line-height: 1;
   }
 }
 
