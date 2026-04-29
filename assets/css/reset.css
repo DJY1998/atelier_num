@@ -8,11 +8,15 @@
 
 html {
   scroll-behavior: smooth;
+  background: #050505;
+  overscroll-behavior-y: none;
 }
 
 body {
   min-height: 100vh;
   line-height: 1.6;
+  overscroll-behavior-y: none;
+  background: #050505;
 }
 
 img,
