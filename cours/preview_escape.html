@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Preview Escape Room</title>
+</head>
+<body>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const level = params.get("level");
+    const started = params.get("started");
+    const finished = params.get("finished");
+
+    if (started === "0") {
+      localStorage.removeItem("energy-escape-level");
+      localStorage.removeItem("energy-escape-timer-start");
+      localStorage.removeItem("energy-escape-timer-final");
+    } else {
+      localStorage.setItem("energy-escape-level", level ?? "0");
+      localStorage.setItem("energy-escape-timer-start", String(Date.now() - 180000));
+      localStorage.removeItem("energy-escape-timer-final");
+    }
+
+    if (finished === "1") {
+      localStorage.setItem("energy-escape-level", "5");
+      localStorage.setItem("energy-escape-timer-start", String(Date.now() - 247000));
+      localStorage.setItem("energy-escape-timer-final", "247000");
+    }
+
+    window.location.replace("../escape-room-demo/index.html");
+  </script>
+</body>
+</html>

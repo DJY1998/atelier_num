@@ -1,0 +1,1089 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <title>Escape Room Énergie · Présentation</title>
+  <style>
+    :root {
+      --bg: #050505;
+      --bg-soft: #0a0a0a;
+      --ink: #f3f1ec;
+      --muted: #b3b1aa;
+      --accent: #ff7a18;
+      --accent-2: #ff9a3c;
+      --warm: #f4b15f;
+      --card: rgba(17, 17, 17, 0.94);
+      --border: rgba(255, 122, 24, 0.18);
+      --grid: rgba(255, 122, 24, 0.07);
+      --shadow: 0 20px 60px rgba(3, 6, 12, 0.45);
+      --radius: 18px;
+      --scale: 1;
+      --font-main: "JetBrainsMono Nerd Font", "JetBrains NF", "JetBrains Mono", "SFMono-Regular", "Menlo", "Consolas", monospace;
+      --font-title: "JetBrainsMono Nerd Font", "JetBrains NF", "JetBrains Mono", "SFMono-Regular", "Menlo", "Consolas", monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      color: var(--ink);
+      font-family: var(--font-main);
+      font-weight: 500;
+      background:
+        radial-gradient(circle at top, rgba(255, 122, 24, 0.12), transparent 50%),
+        radial-gradient(circle at 18% 30%, rgba(255, 122, 24, 0.08), transparent 45%),
+        linear-gradient(140deg, #050505 0%, #0a0a0a 45%, #070707 100%);
+      display: grid;
+      place-items: center;
+      position: relative;
+      isolation: isolate;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255, 154, 60, 0.12), transparent 18%),
+        radial-gradient(circle at 82% 78%, rgba(255, 122, 24, 0.11), transparent 16%);
+      pointer-events: none;
+      z-index: 0;
+      mix-blend-mode: screen;
+      filter: drop-shadow(0 0 26px rgba(255, 122, 24, 0.4));
+    }
+
+    body > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .deck {
+      position: relative;
+      width: min(1240px, 96vw);
+      height: min(740px, 92vh);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(160deg, rgba(15, 15, 15, 0.96), rgba(6, 6, 6, 0.9)),
+        var(--bg-soft);
+    }
+
+    .deck::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 1px solid rgba(255, 122, 24, 0.08);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .deck-logo {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      z-index: 6;
+      width: 92px;
+      height: auto;
+      filter: drop-shadow(0 0 16px rgba(255, 122, 24, 0.18));
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      padding: 60px 70px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 20px;
+      opacity: 0;
+      transform: translateX(26px);
+      transition: opacity 220ms ease, transform 220ms ease;
+    }
+
+    .slide.active {
+      opacity: 1;
+      transform: translateX(0);
+      z-index: 2;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+    }
+
+    .kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      font-size: calc(12px * var(--scale));
+      font-weight: 700;
+      transform: translateY(-6px);
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.08;
+      font-family: var(--font-title);
+      letter-spacing: 0.02em;
+      font-weight: 700;
+      text-wrap: balance;
+    }
+    h1 { font-size: calc(64px * var(--scale)); max-width: 920px; color: var(--accent-2); }
+    h2 { font-size: calc(36px * var(--scale)); color: var(--accent-2); }
+    h3 { font-size: calc(23px * var(--scale)); color: var(--accent); }
+
+    .title-glass {
+      display: inline-block;
+      color: transparent;
+      background:
+        radial-gradient(circle at 18% 24%, rgba(255, 255, 255, 0.92) 0, rgba(255, 255, 255, 0.92) 5%, rgba(255, 233, 208, 0.7) 7%, transparent 16%),
+        radial-gradient(circle at 78% 38%, rgba(255, 248, 238, 0.55) 0, rgba(255, 212, 170, 0.4) 10%, transparent 24%),
+        linear-gradient(120deg, rgba(255, 250, 244, 0.94) 0%, rgba(255, 233, 210, 0.9) 18%, rgba(255, 178, 108, 0.95) 36%, rgba(255, 133, 30, 0.98) 52%, rgba(255, 214, 178, 0.88) 68%, rgba(255, 250, 243, 0.94) 84%, rgba(255, 170, 91, 0.96) 100%);
+      background-size: 220% 220%;
+      background-position: 0% 50%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke: 0.7px rgba(255, 239, 220, 0.22);
+      text-shadow:
+        0 0 0.5px rgba(255, 250, 245, 0.95),
+        0 0 8px rgba(255, 205, 154, 0.18),
+        0 0 22px rgba(255, 122, 24, 0.14);
+      filter: saturate(118%) contrast(108%);
+      animation: liquidGlassShift 9s ease-in-out infinite;
+    }
+
+    p, li, td, th {
+      font-size: calc(21px * var(--scale));
+      line-height: 1.5;
+    }
+
+    strong {
+      color: var(--accent-2);
+      font-weight: 700;
+    }
+
+    code {
+      color: var(--accent-2);
+      font-weight: 700;
+    }
+
+    .muted { color: var(--muted); }
+
+    .accent {
+      color: var(--accent-2);
+      font-weight: 700;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(255, 122, 24, 0.12);
+      border-radius: 12px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform 0.2s ease, border 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 122, 24, 0.3);
+    }
+
+    .card h3 {
+      text-shadow: 0 0 18px rgba(255, 122, 24, 0.08);
+    }
+
+    .card ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .card ul li + li {
+      margin-top: 10px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .media-card {
+      background: linear-gradient(155deg, rgba(20, 20, 20, 0.95), rgba(10, 10, 10, 0.9));
+      border: 1px solid rgba(255, 122, 24, 0.26);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      min-height: 380px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .media-frame {
+      position: relative;
+      flex: 1 1 auto;
+      min-height: 280px;
+      background:
+        radial-gradient(240px 140px at 15% 15%, rgba(255, 122, 24, 0.12), transparent 70%),
+        linear-gradient(180deg, rgba(15, 15, 15, 0.88), rgba(8, 8, 8, 0.98));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .media-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border: 0;
+    }
+
+    .media-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      background: #081214;
+    }
+
+    .media-caption {
+      padding: 14px 16px;
+      border-top: 1px solid rgba(255, 122, 24, 0.16);
+      background: rgba(10, 10, 10, 0.9);
+      color: var(--muted);
+      font-size: calc(16px * var(--scale));
+      line-height: 1.4;
+      font-weight: 600;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 122, 24, 0.2);
+      background: rgba(255, 122, 24, 0.08);
+      color: var(--ink);
+      font-size: calc(14px * var(--scale));
+      font-weight: 700;
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      justify-content: center;
+      height: 100%;
+    }
+
+    .timeline-track {
+      display: flex;
+      align-items: stretch;
+      gap: 10px;
+      min-height: 0;
+    }
+
+    .timeline-segment {
+      position: relative;
+      flex: 1 1 0;
+      border-radius: 18px 18px 12px 12px;
+      border: 1px solid rgba(255, 122, 24, 0.14);
+      background:
+        linear-gradient(180deg, rgba(255, 122, 24, 0.14), rgba(15, 15, 15, 0.95) 26%),
+        var(--card);
+      box-shadow: var(--shadow);
+      padding: 14px 12px 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 8px;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .timeline-segment::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 6px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      opacity: 0.95;
+      border-radius: 18px 18px 0 0;
+    }
+
+    .timeline-segment.major {
+      border-color: rgba(255, 122, 24, 0.32);
+      background:
+        radial-gradient(220px 120px at 100% 0%, rgba(255, 122, 24, 0.16), transparent 70%),
+        linear-gradient(180deg, rgba(255, 122, 24, 0.18), rgba(15, 15, 15, 0.95) 26%),
+        var(--card);
+    }
+
+    .timeline-time {
+      color: var(--accent);
+      font-size: calc(15px * var(--scale));
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      margin-top: 2px;
+    }
+
+    .timeline-segment p {
+      margin: 0;
+      font-size: calc(13.5px * var(--scale));
+      color: var(--muted);
+      line-height: 1.28;
+    }
+
+    .timeline-note {
+      display: inline-flex;
+      align-self: flex-start;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: calc(11px * var(--scale));
+      color: var(--ink);
+      background: rgba(255, 154, 60, 0.12);
+      border: 1px solid rgba(255, 154, 60, 0.32);
+    }
+
+    .matrix {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: calc(18px * var(--scale));
+      background: rgba(10, 10, 10, 0.78);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .matrix th,
+    .matrix td {
+      border: 1px solid rgba(255, 122, 24, 0.14);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .matrix th {
+      color: var(--accent);
+      font-weight: 700;
+      background: rgba(255, 122, 24, 0.08);
+    }
+
+    .matrix td strong {
+      color: var(--accent-2);
+    }
+
+    .tag {
+      color: var(--accent);
+      font-size: calc(14px * var(--scale));
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .step-item {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255, 122, 24, 0.06);
+      border: 1px solid rgba(255, 122, 24, 0.2);
+    }
+
+    .step-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 154, 60, 0.14);
+      border: 1px solid rgba(255, 154, 60, 0.34);
+      color: var(--accent-2);
+      font-weight: 700;
+      font-size: calc(16px * var(--scale));
+    }
+
+    .step-item h3 {
+      margin: 0 0 4px 0;
+      font-size: calc(21px * var(--scale));
+    }
+
+    .step-item p {
+      margin: 0;
+      font-size: calc(18px * var(--scale));
+      line-height: 1.42;
+      color: var(--muted);
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--muted);
+      font-size: calc(14px * var(--scale));
+    }
+
+    .footer::before {
+      content: "Yan Crevoisier · Atelier numérique · 04 mai 2026";
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: calc(12px * var(--scale));
+    }
+
+    .title-meta p:first-child {
+      color: var(--accent-2);
+      font-weight: 700;
+    }
+
+    .title-slide,
+    .closing-slide {
+      grid-template-rows: 1fr auto;
+      gap: 12px;
+    }
+
+    .title-layout,
+    .closing-layout {
+      display: grid;
+      align-content: center;
+      gap: 24px;
+      min-height: 100%;
+      z-index: 1;
+    }
+
+    .title-meta {
+      display: grid;
+      gap: 10px;
+      max-width: 760px;
+    }
+
+    .title-meta p,
+    .closing-layout p {
+      margin: 0;
+      font-size: calc(22px * var(--scale));
+      line-height: 1.35;
+    }
+
+    .title-meta strong {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .closing-layout {
+      place-items: center;
+      text-align: center;
+    }
+
+    .closing-layout h2 {
+      font-size: calc(52px * var(--scale));
+      line-height: 1.05;
+    }
+
+    .controls {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 16px;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .arrow {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 122, 24, 0.22);
+      background: rgba(17, 17, 17, 0.82);
+      color: var(--accent);
+      display: grid;
+      place-items: center;
+      font-size: calc(30px * var(--scale));
+      cursor: pointer;
+      pointer-events: auto;
+      user-select: none;
+      -webkit-user-select: none;
+      box-shadow: 0 10px 24px rgba(255, 122, 24, 0.18);
+    }
+
+    .progress {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 6px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width 220ms ease;
+    }
+
+    .slide.active .card,
+    .slide.active .timeline-segment {
+      animation: rise 240ms ease;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(7px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes liquidGlassShift {
+      0% {
+        background-position: 0% 50%;
+        filter: saturate(112%) contrast(104%) brightness(1);
+      }
+      25% {
+        background-position: 42% 32%;
+        filter: saturate(126%) contrast(108%) brightness(1.03);
+      }
+      50% {
+        background-position: 100% 46%;
+        filter: saturate(138%) contrast(112%) brightness(1.08);
+      }
+      75% {
+        background-position: 64% 78%;
+        filter: saturate(122%) contrast(109%) brightness(1.02);
+      }
+      100% {
+        background-position: 0% 50%;
+        filter: saturate(112%) contrast(104%) brightness(1);
+      }
+    }
+
+    #deck:fullscreen { --scale: 1.12; }
+
+    @media (max-width: 980px) {
+      .deck { height: auto; }
+      .slide { position: relative; padding: 28px; }
+      .grid-2,
+      .grid-3,
+      .media-grid,
+      .timeline-track { grid-template-columns: 1fr; flex-direction: column; min-height: auto; }
+      .timeline-segment { min-height: auto; }
+      p, li { font-size: 18px; }
+      h1 { font-size: 38px; }
+      h2 { font-size: 30px; }
+      .controls { position: fixed; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .title-glass {
+        animation: none;
+        background-position: 30% 50%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="deck" id="deck">
+    <img class="deck-logo" src="../hep_logo_sf.png" alt="Logo HEP SF">
+    <section class="slide active title-slide" data-slide-key="title">
+      <div class="title-layout">
+        <div>
+          <div class="kicker">Projet de rendu TICE / numérique</div>
+          <h1>Escape room numérique en physique</h1>
+        </div>
+        <div class="title-meta">
+          <p><strong>Énergie, frottements et puissance · 2e OS gymnasiale</strong></p>
+          <p>Activité réellement menée en classe, pensée comme une mise en activité disciplinaire guidée par le numérique.</p>
+          <p>Yan Crevoisier · HEP BEJUNE · Atelier numérique · 04 mai 2026</p>
+        </div>
+      </div>
+      <div class="footer"><span></span><span>Diapositive 1/1</span></div>
+    </section>
+
+    <section class="slide" data-slide-key="contexte">
+      <div class="header">
+        <div>
+          <div class="kicker">Cadre</div>
+          <h2>Contexte et intention</h2>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Contexte de classe</h3>
+          <ul>
+            <li>Classe de <strong>2e OS gymnasiale</strong> en physique.</li>
+            <li>Chapitre déjà travaillé : travail d’une force, énergie mécanique, frottements et puissance.</li>
+            <li>Objectif : faire réinvestir les notions dans un format plus engageant qu’une fiche d’exercices classique.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Choix didactique</h3>
+          <p>Le site transforme une série d’exercices en <strong>parcours d’escape room</strong> : progression par salles, validation immédiate, dynamique de binôme et mise en commun finale.</p>
+          <div class="pill-row">
+            <span class="pill">Travail en binômes</span>
+            <span class="pill">Feedback immédiat</span>
+            <span class="pill">Ludification</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer"><span></span><span>Diapositive 2/1</span></div>
+    </section>
+
+    <section class="slide" data-slide-key="dispositif">
+      <div class="header">
+        <div>
+          <div class="kicker">Dispositif</div>
+          <h2>Ce que fait concrètement le site</h2>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Fonctionnement</h3>
+          <ul>
+            <li>Accès simple par navigateur web.</li>
+            <li>Une salle juste ouvre la suivante.</li>
+            <li>Chaque étape combine hypothèses à choisir et résultat numérique à calculer.</li>
+            <li>Le brouillon reste indispensable pour justifier le raisonnement.</li>
+          </ul>
+        </div>
+        <div class="media-card">
+          <div class="media-frame">
+            <iframe
+              title="Aperçu live de la salle 1"
+              data-src="preview_escape.html?started=1&level=0"
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="media-caption">Exemple d’une salle : validation d’hypothèses et calcul d’un résultat.</div>
+        </div>
+      </div>
+      <div class="footer"><span></span><span>Diapositive 3/1</span></div>
+    </section>
+
+    <section class="slide" data-slide-key="objectifs">
+      <div class="header">
+        <div>
+          <div class="kicker">Objectifs</div>
+          <h2>Objectifs SMART et ancrage PEC</h2>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="tag">O1</div>
+          <p><strong>D’ici la fin de l’activité</strong>, les élèves distinguent correctement les <strong>forces conservatives</strong> et <strong>non conservatives</strong> dans au moins quatre situations sur cinq.</p>
+        </div>
+        <div class="card">
+          <div class="tag">O2</div>
+          <p><strong>En binôme et sur brouillon</strong>, les élèves mobilisent un <strong>bilan d’énergie mécanique</strong> pour résoudre les salles en justifiant leurs hypothèses avant validation.</p>
+        </div>
+        <div class="card">
+          <div class="tag">O3</div>
+          <p><strong>Au cours du parcours</strong>, les élèves interprètent l’effet des <strong>frottements</strong> et calculent correctement une vitesse ou une puissance dissipée dans les situations proposées.</p>
+        </div>
+      </div>
+      <div class="card" style="margin-top: 12px;">
+        <h3>Liens avec le PEC de l’Atelier numérique</h3>
+        <ul>
+          <li><strong>1.2</strong> : concevoir des activités d’apprentissage variées, adaptées et qui fassent sens pour les élèves.</li>
+          <li><strong>6.2</strong> : intégrer les médias et technologies de l’information de façon fonctionnelle et pertinente.</li>
+          <li><strong>7.1</strong> : manifester une compréhension critique des savoirs à enseigner afin de permettre aux élèves de se les approprier.</li>
+        </ul>
+      </div>
+      <div class="footer"><span></span><span>Diapositive 4/1</span></div>
+    </section>
+
+    <section class="slide" data-slide-key="intro-screen">
+      <div class="header">
+        <div>
+          <div class="kicker">Parcours</div>
+          <h2>Écran d’entrée</h2>
+        </div>
+      </div>
+      <div class="media-card">
+        <div class="media-frame">
+          <iframe
+            title="Aperçu live de l'écran d'entrée"
+            data-src="preview_escape.html?started=0"
+            loading="lazy"
+          ></iframe>
+        </div>
+        <div class="media-caption">Briefing initial, chrono global et barre de progression.</div>
+      </div>
+      <div class="footer"><span></span><span>Diapositive 5/1</span></div>
+    </section>
+
+    <section class="slide" data-slide-key="room-screen">
+      <div class="header">
+        <div>
+          <div class="kicker">Parcours</div>
+          <h2>Exemple de salle</h2>
+        </div>
+      </div>
+      <div class="media-card">
+        <div class="media-frame">
+          <iframe
+            title="Aperçu live d'une salle intermédiaire"
+            data-src="preview_escape.html?started=1&level=2"
+            loading="lazy"
+          ></iframe>
+        </div>
+        <div class="media-caption">Une salle combine hypothèses à valider et résultat numérique à calculer.</div>
+      </div>
+      <div class="footer"><span></span><span>Diapositive 6/1</span></div>
+    </section>
+
+    <section class="slide" data-slide-key="deroulement">
+      <div class="header">
+        <div>
+          <div class="kicker">Déroulé</div>
+          <h2>Déroulement de l’activité en classe</h2>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-track">
+          <div class="timeline-segment">
+            <div class="timeline-time">5 min</div>
+            <h3>Mise au travail</h3>
+            <p>Présentation du cadre, des attentes et du fonctionnement du site.</p>
+          </div>
+          <div class="timeline-segment major">
+            <div class="timeline-time">30–40 min</div>
+            <h3>Résolution</h3>
+            <p>Travail en binômes sur les cinq salles, avec calculs sur brouillon et validation progressive.</p>
+            <div class="timeline-note">phase centrale</div>
+          </div>
+          <div class="timeline-segment">
+            <div class="timeline-time">5–10 min</div>
+            <h3>Mise en commun</h3>
+            <p>Clarification des erreurs fréquentes, comparaison des démarches et institutionnalisation.</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer"><span></span><span>Diapositive 7/1</span></div>
+    </section>
+
+    <section class="slide" data-slide-key="construction">
+      <div class="header">
+        <div>
+          <div class="kicker">Technique</div>
+          <h2>Comment le site est construit</h2>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Ce que c’est</h3>
+          <ul>
+            <li>Un <strong>site statique</strong> en HTML, CSS et JavaScript.</li>
+            <li>Pas de base de données ni de backend complexe.</li>
+            <li>La logique des salles, du chrono et de la progression est gérée dans le navigateur.</li>
+            <li>Les réponses attendues et l’accès enseignant ne sont pas laissés en clair dans l’interface, pour limiter la triche par simple inspection.</li>
+            <li>Le format reste léger, simple à modifier et facile à réutiliser.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Pipeline Git + Netlify</h3>
+          <div class="step-list">
+            <div class="step-item">
+              <div class="step-num">1</div>
+              <div><p>Modification locale du site.</p></div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">2</div>
+              <div><p>Versionnement et mise à jour via <strong>Git</strong>.</p></div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">3</div>
+              <div><p>Déploiement automatique sur <strong>Netlify</strong>.</p></div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">4</div>
+              <div><p>Mise à disposition rapide du site en ligne pour la classe.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer"><span></span><span>Diapositive 8/1</span></div>
+    </section>
+
+    <section class="slide" data-slide-key="plusvalue">
+      <div class="header">
+        <div>
+          <div class="kicker">Plus-value</div>
+          <h2>Ce que le numérique apporte ici</h2>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="tag">Feedback</div>
+          <p>Des exercices de physique deviennent un parcours gamifié plus engageant qu’une fiche classique.</p>
+        </div>
+        <div class="card">
+          <div class="tag">Engagement</div>
+          <p>La progression en salles soutient la motivation et donne un but clair.</p>
+        </div>
+        <div class="card">
+          <div class="tag">Constat</div>
+          <p>Après test en classe, ce format a très bien fonctionné pour mettre les élèves au travail.</p>
+        </div>
+      </div>
+      <div class="card" style="margin-top: 14px;">
+        <h3>Réglage du site</h3>
+        <p>Les résultats numériques sont validés avec une <strong>tolérance de 0,5&nbsp;%</strong>, pour garder une exigence disciplinaire tout en tenant compte des arrondis.</p>
+      </div>
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div>
+            <h3>Transformation</h3>
+            <p>Le numérique est pertinent ici parce qu’il transforme des exercices existants en parcours gamifié sans changer l’exigence disciplinaire.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div>
+            <h3>Validation en classe</h3>
+            <p>Après test avec une classe de 2e OS gymnasiale, ce format s’est montré efficace pour engager les élèves dans le raisonnement.</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer"><span></span><span>Diapositive 9/1</span></div>
+    </section>
+
+    <section class="slide" data-slide-key="vigilance">
+      <div class="header">
+        <div>
+          <div class="kicker">Vigilance</div>
+          <h2>Limites et garde-fous didactiques</h2>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Risques</h3>
+          <ul>
+            <li>Essai-erreur sans véritable raisonnement.</li>
+            <li>Écart de rythme important entre binômes.</li>
+            <li>Focalisation sur le jeu plus que sur le concept.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Réponses possibles</h3>
+          <ul>
+            <li>Exiger une trace de calcul avant chaque validation.</li>
+            <li>Prévoir des questions bonus pour les groupes rapides.</li>
+            <li>Garder une synthèse collective suffisamment structurée.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer"><span></span><span>Diapositive 10/1</span></div>
+    </section>
+
+    <section class="slide" data-slide-key="demo">
+      <div class="header">
+        <div>
+          <div class="kicker">Démonstration</div>
+          <h2>Accès enseignant et vue de fin de parcours</h2>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Accès prévu pour l’enseignant</h3>
+          <ul>
+            <li>Le mot de passe <strong><code>yan98</code></strong> permet de sauter les salles.</li>
+            <li>Le mot de passe maître est protégé côté code, et les réponses attendues sont aussi masquées.</li>
+            <li>Utile pour présenter rapidement l’activité ou l’anticiper avant utilisation.</li>
+            <li>Permet aussi de montrer la progression complète sans refaire tout le parcours.</li>
+          </ul>
+        </div>
+        <div class="media-card">
+          <div class="media-frame">
+            <iframe
+              title="Aperçu live de l'écran final"
+              data-src="preview_escape.html?started=1&finished=1"
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="media-caption">Écran final : le parcours peut être montré rapidement en démonstration enseignant.</div>
+        </div>
+      </div>
+      <div class="footer"><span></span><span>Diapositive 11/1</span></div>
+    </section>
+
+    <section class="slide" data-slide-key="bilan">
+      <div class="header">
+        <div>
+          <div class="kicker">Bilan</div>
+          <h2>Ce que je retiens du dispositif</h2>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Ce qui fonctionne bien</h3>
+          <ul>
+            <li>Une forte mise en activité sans renoncer à l’exigence disciplinaire.</li>
+            <li>Une transformation d’exercices en activité gamifiée qui reste liée au raisonnement physique.</li>
+            <li>Un support réutilisable et adaptable à d’autres chapitres.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Questions ouvertes</h3>
+          <p>Jusqu’où peut-on aller dans la ludification sans diluer les apprentissages ? Dans quels autres contenus ce type de transformation pourrait-il fonctionner ?</p>
+        </div>
+      </div>
+      <div class="footer"><span></span><span>Diapositive 12/1</span></div>
+    </section>
+
+    <section class="slide" data-slide-key="sources">
+      <div class="header">
+        <div>
+          <div class="kicker">Sources</div>
+          <h2>Références et appuis de conception</h2>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Inspiration disciplinaire</h3>
+          <ul>
+            <li><strong>Benson, Harris</strong>, <em>Physique. 1, Mécanique</em>, 5e édition, Pearson / ERPI, Montréal, 2015.</li>
+            <li>Plusieurs exercices du chapitre énergie-mécanique ont servi de base d’inspiration pour reformuler les situations du site.</li>
+            <li>Les énoncés ont ensuite été adaptés au niveau, au format escape room et au temps disponible en classe.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Conception et publication</h3>
+          <ul>
+            <li><strong>ChatGPT</strong> utilisé comme aide à la conception de l’escape room et à la mise en forme de cette présentation.</li>
+            <li>Code source du site : <code>index.html</code>, <code>style.css</code>, <code>game.js</code>.</li>
+            <li>Publication via <strong>Git</strong> et <strong>Netlify</strong>.</li>
+            <li>Plan de cours de référence : <strong>Atelier numérique</strong>, HEP BEJUNE, printemps 2025/2026.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer"><span></span><span>Diapositive 13/1</span></div>
+    </section>
+
+    <section class="slide closing-slide" data-slide-key="merci">
+      <div class="closing-layout">
+        <h2>Questions?</h2>
+      </div>
+      <div class="footer"><span></span><span>Diapositive 14/1</span></div>
+    </section>
+
+    <div class="controls" aria-hidden="true">
+      <div class="arrow" id="prev" title="Précédent">‹</div>
+      <div class="arrow" id="next" title="Suivant">›</div>
+    </div>
+    <div class="progress" id="progress"></div>
+  </div>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const progress = document.getElementById("progress");
+    const deck = document.getElementById("deck");
+    const pageLabels = slides.map((slide) => slide.querySelector(".footer span:last-child"));
+    const liveFrames = Array.from(document.querySelectorAll("iframe[data-src]"));
+    const liquidTitles = Array.from(document.querySelectorAll("h1, h2"));
+    const storageKey = "presentation_escape_room_index";
+    let index = 0;
+
+    liquidTitles.forEach((title) => title.classList.add("title-glass"));
+
+    pageLabels.forEach((label, i) => {
+      if (label) label.textContent = `Diapositive ${i + 1}/${slides.length}`;
+    });
+
+    function render() {
+      slides.forEach((slide, i) => slide.classList.toggle("active", i === index));
+      liveFrames.forEach((frame) => {
+        const parentSlide = frame.closest(".slide");
+        const shouldLoad = parentSlide && parentSlide.classList.contains("active");
+        const targetSrc = frame.dataset.src;
+        if (shouldLoad && frame.getAttribute("src") !== targetSrc) {
+          frame.setAttribute("src", targetSrc);
+        }
+        if (!shouldLoad && frame.getAttribute("src")) {
+          frame.removeAttribute("src");
+        }
+      });
+      progress.style.width = `${((index + 1) / slides.length) * 100}%`;
+      localStorage.setItem(storageKey, String(index));
+    }
+
+    function go(delta) {
+      index = Math.max(0, Math.min(slides.length - 1, index + delta));
+      render();
+    }
+
+    document.getElementById("prev").addEventListener("click", () => go(-1));
+    document.getElementById("next").addEventListener("click", () => go(1));
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight" || event.key === "PageDown" || event.key === " ") {
+        event.preventDefault();
+        go(1);
+      }
+      if (event.key === "ArrowLeft" || event.key === "PageUp") {
+        event.preventDefault();
+        go(-1);
+      }
+      if (event.key.toLowerCase() === "f") {
+        if (!document.fullscreenElement) {
+          deck.requestFullscreen?.();
+        } else {
+          document.exitFullscreen?.();
+        }
+      }
+    });
+
+    const saved = Number(localStorage.getItem(storageKey));
+    if (!Number.isNaN(saved) && saved >= 0 && saved < slides.length) {
+      index = saved;
+    }
+    render();
+  </script>
+</body>
+</html>
