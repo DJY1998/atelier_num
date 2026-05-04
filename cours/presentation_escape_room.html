@@ -258,6 +258,33 @@
       flex-direction: column;
     }
 
+    .preview-card {
+      width: 100%;
+      justify-self: stretch;
+    }
+
+    .preview-card .media-frame {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .preview-card .media-frame iframe {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 128%;
+      height: 128%;
+      transform: scale(0.82);
+      transform-origin: top center;
+      translate: -50% 0;
+    }
+
+    .site-overview-preview .media-frame iframe {
+      width: 134%;
+      height: 134%;
+      transform: scale(0.75);
+    }
+
     .media-frame {
       position: relative;
       flex: 1 1 auto;
@@ -691,7 +718,7 @@
             <li>Le brouillon reste indispensable pour justifier le raisonnement.</li>
           </ul>
         </div>
-        <div class="media-card">
+        <div class="media-card preview-card site-overview-preview">
           <div class="media-frame">
             <iframe
               title="Aperçu live de la salle 1"
@@ -744,7 +771,7 @@
           <h2>Écran d’entrée</h2>
         </div>
       </div>
-      <div class="media-card">
+      <div class="media-card preview-card">
         <div class="media-frame">
           <iframe
             title="Aperçu live de l'écran d'entrée"
@@ -764,7 +791,7 @@
           <h2>Exemple de salle</h2>
         </div>
       </div>
-      <div class="media-card">
+      <div class="media-card preview-card">
         <div class="media-frame">
           <iframe
             title="Aperçu live d'une salle intermédiaire"
@@ -894,6 +921,35 @@
       <div class="footer"><span></span><span>Diapositive 9/1</span></div>
     </section>
 
+    <section class="slide" data-slide-key="samr">
+      <div class="header">
+        <div>
+          <div class="kicker">Analyse</div>
+          <h2>Positionnement SAMR</h2>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Où situer l’objet ?</h3>
+          <p>L’escape room se situe <strong>principalement au niveau Modification</strong>, avec quelques aspects d’<strong>Augmentation</strong>.</p>
+          <ul>
+            <li>Ce n’est pas une simple fiche numérisée.</li>
+            <li>Le feedback immédiat ajoute une plus-value fonctionnelle.</li>
+            <li>Mais surtout, le numérique reconfigure la tâche : progression par salles, validation conditionnelle et dynamique scénarisée.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Pourquoi cela fait sens</h3>
+          <ul>
+            <li>Les exercices restent disciplinaires, mais leur forme de travail change réellement.</li>
+            <li>Le numérique modifie l’engagement, le rythme et la manière d’entrer dans le raisonnement.</li>
+            <li>Je ne le place pas en <strong>Redefinition</strong>, car l’activité reste proche d’exercices classiques dans ses objectifs d’apprentissage.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer"><span></span><span>Diapositive 10/1</span></div>
+    </section>
+
     <section class="slide" data-slide-key="vigilance">
       <div class="header">
         <div>
@@ -913,9 +969,9 @@
         <div class="card">
           <h3>Réponses possibles</h3>
           <ul>
-            <li>Exiger une trace de calcul avant chaque validation.</li>
+            <li>Prévoir plusieurs questions à valider dans chaque salle, pas une seule réponse isolée.</li>
+            <li>Utiliser une tolérance numérique fine pour limiter les validations par simple essai.</li>
             <li>Prévoir des questions bonus pour les groupes rapides.</li>
-            <li>Garder une synthèse collective suffisamment structurée.</li>
           </ul>
         </div>
       </div>
@@ -939,7 +995,7 @@
             <li>Permet aussi de montrer la progression complète sans refaire tout le parcours.</li>
           </ul>
         </div>
-        <div class="media-card">
+        <div class="media-card preview-card">
           <div class="media-frame">
             <iframe
               title="Aperçu live de l'écran final"
@@ -970,8 +1026,12 @@
           </ul>
         </div>
         <div class="card">
-          <h3>Questions ouvertes</h3>
-          <p>Jusqu’où peut-on aller dans la ludification sans diluer les apprentissages ? Dans quels autres contenus ce type de transformation pourrait-il fonctionner ?</p>
+          <h3>Inconvénients à garder en tête</h3>
+          <ul>
+            <li>Le format demande un temps de conception plus élevé qu’une fiche d’exercices classique.</li>
+            <li>Le jeu peut encourager certains élèves à tester au hasard si le brouillon n’est pas exigé.</li>
+            <li>Le dispositif dépend de l’accès au matériel et d’un minimum de fiabilité technique.</li>
+          </ul>
         </div>
       </div>
       <div class="footer"><span></span><span>Diapositive 12/1</span></div>
@@ -1008,7 +1068,14 @@
 
     <section class="slide closing-slide" data-slide-key="merci">
       <div class="closing-layout">
-        <h2>Questions?</h2>
+        <h2>Questions ouvertes</h2>
+        <div class="card" style="max-width: 980px; text-align: left;">
+          <ul>
+            <li>À quelles conditions une activité gamifiée garde-t-elle une vraie exigence disciplinaire en physique ?</li>
+            <li>Comment trouver un équilibre entre engagement ludique et temps réellement consacré au raisonnement scientifique ?</li>
+            <li>Dans quels autres chapitres ou disciplines ce format pourrait-il être transposé de manière pertinente ?</li>
+          </ul>
+        </div>
       </div>
       <div class="footer"><span></span><span>Diapositive 14/1</span></div>
     </section>
